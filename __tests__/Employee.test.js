@@ -11,5 +11,3 @@ test('create employee object', () => {
     expect(employee.email).toBe(email);
 
 })
-
-test('')
