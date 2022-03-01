@@ -1,0 +1,28 @@
+{
+  "devDependencies": {
+    "jest": "^27.5.1"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  },
+  "name": "team-portfoliogenerator",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LF56/Team-PortfolioGenerator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LF56/Team-PortfolioGenerator/issues"
+  },
+  "homepage": "https://github.com/LF56/Team-PortfolioGenerator#readme"
+}
