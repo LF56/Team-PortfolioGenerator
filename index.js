@@ -38,6 +38,32 @@ inquirer
                 }
               }
         },
+        {
+            type: 'input',
+            name: 'managerEmail',
+            message: 'Enter manager email address.',
+            validate: managerEmail => {
+                if (managerEmail) {
+                  return true;
+                } else {
+                  console.log('Please enter manager email address.');
+                  return false;
+                }
+              }
+        },
+        {
+            type: 'input',
+            name: 'officeNumber',
+            message: 'Please enter the office phone number.',
+            validate: officeNumber => {
+                if (officeNumber) {
+                  return true;
+                } else {
+                  console.log('Please enter office phone number');
+                  return false;
+                }
+              }
+        },
         
 
     ])
