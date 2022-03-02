@@ -5,11 +5,20 @@ test('create intern object', () => {
     const id = '7890';
     const email = 'Alex@gmail.com';
     const school = 'Community School Of Heathrow';
-    
     const intern = new Intern(name,id,email,school);
 
     expect(intern.name).toBe(name);
     expect(intern.id).toBe(id);
     expect(intern.email).toBe(email);
     expect(intern.school).toBe(school);
+})
+
+test('retrieve intern school', () => {
+    const name = 'Alex';
+    const id = '7890';
+    const email = 'Alex@gmail.com';
+    const school = 'Community School Of Heathrow';
+    const intern = new Intern(name,id,email,school);
+
+    expect(intern.getSchool()).toStrictEqual(expect.stringContaining(intern.school.toString()));
 })
