@@ -9,64 +9,41 @@ const inquirer = require('inquirer');
 // const Intern = require('./lib/Intern');
 // const Manager = require('./lib/Manager');
 
-//engineer question promts
+//manager -head- prompts
 inquirer
     .prompt([
         {
             type: 'input',
             name: 'name',
-            message: 'Who is the teams engineer?',
+            message: 'Who is the team manager?',
             validate: nameInput => {
                 if (nameInput) {
                   return true;
                 } else {
-                  console.log('Please enter your engineer name.');
+                  console.log('Please enter your team manager.');
                   return false;
                 }
               }
         },
         {
             type: 'input',
-            name: 'engineerID',
-            message: 'Enter engineer ID?',
-            validate: engineerID => {
-                if (engineerID) {
+            name: 'managerID',
+            message: 'Enter Manager ID.',
+            validate: managerID => {
+                if (managerID) {
                   return true;
                 } else {
-                  console.log('Please enter your engineer ID.');
+                  console.log('Please enter manager ID.');
                   return false;
                 }
               }
         },
-        {
-            type: 'input',
-            name: 'engineerEmail',
-            message: 'Please enter engineer email address',
-            validate: engineerEmail => {
-                if (engineerEmail) {
-                  return true;
-                } else {
-                  console.log('Please enter your engineer email address.');
-                  return false;
-                }
-              }
-        },
-        {
-            type: 'input',
-            name: 'engineerGithub',
-            message: 'Please enter engineer Github.',
-            validate: engineerGithub => {
-                if (engineerGithub) {
-                  return true;
-                } else {
-                  console.log('Please enter your engineer Github.');
-                  return false;
-                }
-              }
-        },
+        
 
     ])
-    
+
+
+
 
 
 // const questions = [
