@@ -13,4 +13,14 @@ test('create manager object', () => {
     expect(manager.officeNumber).toBe(officeNumber);
   
 })
+test('retrieve manager office number', () => {
+    const name = 'Holly';
+    const id = '2222';
+    const email = 'Holly@gmail.com';
+    const officeNumber = '4073334421'
+    const manager = new Manager(name,id,email,officeNumber);
+   
+
+    expect(manager.getofficeNumber()).toStrictEqual(expect.stringContaining(manager.officeNumber.toString()));
+})
 
