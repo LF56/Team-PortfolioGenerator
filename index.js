@@ -68,22 +68,80 @@ inquirer
 
     ])
 
+const employee = () => {
+    console.log(`
+    =================
+    Adding New Employee To Team
+    =================
+    `);
+
+    return inquirer.prompt([
+        {
+            type: 'input',
+            name: 'employeeRole',
+            message: 'Please select role of employee',
+            choices: ['Engineer', 'Intern'],
+        },
+        {
+            type: 'input',
+            name: 'name',
+            message: 'Please enter employee name.',
+            validate: nameInput => {
+                if (nameInput) {
+                  return true;
+                } else {
+                  console.log('Please enter employee name.');
+                  return false;
+                }
+              }
+        },
+        {
+            type: 'input',
+            name: 'employeeID',
+            message: 'Please enter employee ID.',
+            validate: employeeID => {
+                if (employeeID) {
+                  return true;
+                } else {
+                  console.log('Please enter employee ID.');
+                  return false;
+                }
+              }
+        },
+        {
+            type: 'input',
+            name: 'employeeEmail',
+            message: 'Please enter employee email.',
+            validate: employeeEmail => {
+                if (employeeEmail) {
+                  return true;
+                } else {
+                  console.log('Please enter employee email.');
+                  return false;
+                }
+              }
+        },
+        {
+            type: 'input',
+            name: 'github',
+            message: 'Please enter employee Github.',
+            validate: github => {
+                if (github) {
+                  return true;
+                } else {
+                  console.log('Please enter employee Github.');
+                  return false;
+                }
+              }
+        },
 
 
 
 
-// const questions = [
-//     {
-//       type: 'input',
-//       name: 'name',
-//       message: 'What is the engineer name for this team?',
-//       validate: nameInput => {
-//         if (nameInput) {
-//           return true;
-//         } else {
-//           console.log('Please enter your engineer name.');
-//           return false;
-//         }
-//       }
-//     },
-// ]
+
+
+
+
+    ])
+}
+
