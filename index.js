@@ -6,9 +6,9 @@ const generateHTML = require('./src/generateHTML');
 
 
 //profile for team selections
-// const Engineer = require('./lib/Engineer');
-// const Intern = require('./lib/Intern');
-// const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const Manager = require('./lib/Manager');
 
 //manager -head- prompts
 const generateManager = () => {
@@ -28,10 +28,10 @@ const generateManager = () => {
         },
         {
             type: 'input',
-            name: 'employeeID',
+            name: 'managerID',
             message: 'Enter Manager ID.',
-            validate: employeeID => {
-                if (employeeID) {
+            validate: managerID => {
+                if (managerID) {
                     return true;
                 } else {
                     console.log('Please enter manager ID.');
@@ -41,10 +41,10 @@ const generateManager = () => {
         },
         {
             type: 'input',
-            name: 'employeeEmail',
+            name: 'managerEmail',
             message: 'Enter manager email address.',
-            validate: employeeEmail => {
-                if (employeeEmail) {
+            validate: managerEmail => {
+                if (managerEmail) {
                     return true;
                 } else {
                     console.log('Please enter manager email address.');
@@ -66,6 +66,13 @@ const generateManager = () => {
             }
         },
     ])
+    .then(generateManager => {
+        const {name, managerID, managerEmail, officeNumber} = generateManager;
+        const manager = new Manager (name, managerEmail, managerID, officeNumber);
+
+        teamMembers.push(manager);
+        
+    })
 };
 const addTeam = teamData => {
     console.log(`
@@ -163,12 +170,22 @@ const addTeam = teamData => {
             let member ;
 
             if (addMoreMembers === 'Engineer'){
-                employee = new Engineer (employeeName, employeeEmail, employeeID, employeeGithub);
+                employee = new Engineer(employeeName, employeeEmail, employeeID, employeeGithub);
             } else if (addMoreMembers === 'Intern'){
-                employee = new Intern (employeeName, employeeEmail, employeeID, internSchool)
+                employee = new Intern(employeeName, employeeEmail, employeeID, internSchool)
             }
-        }
 
-
+            teamMembers.push(member);
+            if (confirmAddEmployee) {
+                return addTeam(teamMembers)
+            } else {
+                return teamMembers
+            }
+        })
 };
 
+generateManager()
+.then(addTeam)
+.then(teamMembers => {
+    return generateHTML(teamMembers);
+})
