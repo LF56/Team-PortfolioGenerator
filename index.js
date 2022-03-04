@@ -15,6 +15,19 @@ const generateManager = () => {
     return inquirer.prompt([
         {
             type: 'input',
+            name: 'teamName',
+            message: 'What is the teams name?',
+            validate: teamName => {
+                if (teamName) {
+                    return true;
+                } else {
+                    console.log('Please enter your team name.');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
             name: 'name',
             message: 'Who is the team manager?',
             validate: nameInput => {
@@ -74,7 +87,7 @@ const generateManager = () => {
         
     })
 };
-const addTeam = teamData => {
+const addTeam = () => {
     console.log(`
   =================
   Add a Team Member
@@ -170,22 +183,29 @@ const addTeam = teamData => {
             let member ;
 
             if (addMoreMembers === 'Engineer'){
-                employee = new Engineer(employeeName, employeeEmail, employeeID, employeeGithub);
+                member = new Engineer(employeeName, employeeEmail, employeeID, employeeGithub);
             } else if (addMoreMembers === 'Intern'){
-                employee = new Intern(employeeName, employeeEmail, employeeID, internSchool)
+                member = new Intern(employeeName, employeeEmail, employeeID, internSchool)
             }
 
             teamMembers.push(member);
             if (confirmAddEmployee) {
-                return addTeam(teamMembers)
+                console.log(teamMembers)
+                return addTeam()
             } else {
-                return teamMembers
+                console.log(teamMembers)
+                return writeToFile('index.html',teamMembers); 
             }
         })
 };
 
 generateManager()
 .then(addTeam)
-.then(teamMembers => {
-    return generateHTML(teamMembers);
-})
+
+
+function writeToFile(fileName, data) {
+    return fs.writeFile(fileName, generateHTML(data), (err) =>{
+      if (err) throw err;
+      console.log('This file has been saved.')
+    }) 
+  }
