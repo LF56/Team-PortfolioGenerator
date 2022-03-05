@@ -9,4 +9,6 @@ header{
     padding: 25px;
     margin: 5px;
 }
-
+.card-body{
+    background-color: rgb(159, 207, 207);
+}
