@@ -68,20 +68,20 @@ const generateManager = () => {
         {
             type: 'input',
             name: 'officeNumber',
-            message: 'Please enter the office phone number.',
+            message: 'Please enter the office number.',
             validate: officeNumber => {
                 if (officeNumber) {
                     return true;
                 } else {
-                    console.log('Please enter office phone number');
+                    console.log('Please enter office number');
                     return false;
                 }
             }
         },
     ])
     .then(generateManager => {
-        const {name, managerID, managerEmail, officeNumber} = generateManager;
-        const manager = new Manager (name, managerEmail, managerID, officeNumber);
+        const {name, managerID, managerEmail, officeNumber, teamName} = generateManager;
+        const manager = new Manager (name, managerID, managerEmail, officeNumber, teamName);
 
         teamMembers.push(manager);
         
@@ -183,9 +183,9 @@ const addTeam = () => {
             let member ;
 
             if (addMoreMembers === 'Engineer'){
-                member = new Engineer(employeeName, employeeEmail, employeeID, employeeGithub);
+                member = new Engineer(employeeName, employeeID, employeeEmail, employeeGithub);
             } else if (addMoreMembers === 'Intern'){
-                member = new Intern(employeeName, employeeEmail, employeeID, internSchool)
+                member = new Intern(employeeName, employeeID, employeeEmail, internSchool)
             }
 
             teamMembers.push(member);
