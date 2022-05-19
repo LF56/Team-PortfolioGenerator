@@ -9,7 +9,7 @@
   - [Questions](#Questions)
 
 # Description
-This application is designed to create a portfolio for your team!
+An application to help users easily input `new team members` and dynamically generate an HTML page with their responses.
 
 # Install
 You instal this application through a git clone, or you can manually download the files
